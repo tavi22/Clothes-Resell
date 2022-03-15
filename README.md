@@ -1,2 +1,2 @@
 # Clothes-Resell
-Aplicatie de vandut haine second hand cu o interfata de tip instagram, fiecare user are un profil cu obiectele de vanzare si un sistem de followers, plus o optiune ce include un sistem de verificare al originalitatii hainelor de firma.
+An application for selling used clothes with an instagram type interface, each user has a profile with their objects for sale and a system of followers, plus an option that includes a system for checking the originality of high-end clothes.
