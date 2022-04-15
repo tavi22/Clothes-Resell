@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/drawable/transparent_background.xml" value="0.3785" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/fragment_explore.xml" value="0.2750759878419453" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/fragment_help.xml" value="0.5230978260869565" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/fragment_home.xml" value="0.2750759878419453" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/fragment_wishlist.xml" value="0.27710233029381964" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/toolbar.xml" value="0.1" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.5051546391752577" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/menu/top_app_bar.xml" value="0.565625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
