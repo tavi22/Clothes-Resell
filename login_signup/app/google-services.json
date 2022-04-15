@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1082482030162",
+    "project_id": "mdslogin-b1e89",
+    "storage_bucket": "mdslogin-b1e89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082482030162:android:4d9d847acba1212320d18b",
+        "android_client_info": {
+          "package_name": "com.example.mds_22"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082482030162-193vtib278ihloa6evbe514k19k73b4s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfmw40A1ZN3w7f2SMLBbXQqpk3GYbPgv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082482030162-193vtib278ihloa6evbe514k19k73b4s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
