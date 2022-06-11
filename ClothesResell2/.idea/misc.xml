@@ -4,10 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/drawable/transparent_background.xml" value="0.3785" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/activity_login.xml" value="0.33469202898550726" />
         <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/activity_signup.xml" value="0.2124600638977636" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/activity_start.xml" value="0.1" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/activity_user.xml" value="0.33469202898550726" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/activty_post.xml" value="0.21195652173913043" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/content_start.xml" value="0.20925925925925926" />
         <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/fragment_explore.xml" value="0.2750759878419453" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/fragment_first.xml" value="0.31431159420289856" />
         <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/fragment_help.xml" value="0.5230978260869565" />
         <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/fragment_home.xml" value="0.2750759878419453" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/fragment_my_profile.xml" value="0.20925925925925926" />
+        <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/fragment_notifications.xml" value="0.20925925925925926" />
         <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/fragment_wishlist.xml" value="0.27710233029381964" />
         <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/layout/toolbar.xml" value="0.1" />
         <entry key="..\:/Users/Tavi/AndroidStudioProjects/ClothesResell2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.5051546391752577" />
