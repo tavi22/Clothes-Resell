@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
@@ -13,11 +14,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.canhub.cropper.CropImage;
+import com.canhub.cropper.CropImageContract;
+import com.canhub.cropper.CropImageContractOptions;
+import com.canhub.cropper.CropImageOptions;
+import com.canhub.cropper.CropImageView;
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,11 +35,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.annotations.NotNull;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 
 public class PostActivity extends AppCompatActivity {
@@ -44,8 +55,6 @@ public class PostActivity extends AppCompatActivity {
     TextView post;
     EditText description;
 
-
-    ImageView iv_pick_image;
     ActivityResultLauncher<String> mGetContent;
 
 
@@ -54,9 +63,13 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
-        iv_pick_image = findViewById(R.id.image_added);
-
+        close = findViewById(R.id.close);
+        image_added = findViewById(R.id.image_added);
+        post = findViewById(R.id.post);
+        description = findViewById(R.id.description);
         storageReference = FirebaseStorage.getInstance().getReference("posts");
+
+
 
         close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,9 +86,22 @@ public class PostActivity extends AppCompatActivity {
             }
         });
 
-//        CropImage.activity()
-//                .setAspectRatio(1, 1)
-//                .start(PostActivity.this);
+        image_added.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mGetContent.launch("image/*");
+            }
+        });
+
+    mGetContent = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+        @Override
+        public void onActivityResult(Uri result) {
+            Intent intent = new Intent(PostActivity.this, CropActivity.class);
+            intent.putExtra("DATA", result.toString());
+            startActivityForResult(intent, 101);
+        }
+    });
+
 
     }
 
@@ -146,15 +172,18 @@ public class PostActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-//        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK){
-//            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-//            imageUri = result.getUri();
-//
-//            image_added.setImageURI(imageUri);
-//        } else {
-//            Toast.makeText(this, "Something gone wrong!", Toast.LENGTH_SHORT).show();
-//            startActivity(new Intent(PostActivity.this, MainActivity.class));
-//            finish();
-//        }
+        if (resultCode == -1 && requestCode == 101) {
+            String result = data.getStringExtra("RESULT");
+            Uri resultUri = null;
+            if (result != null) {
+                resultUri = Uri.parse(result);
+            }
+
+            image_added.setImageURI(resultUri);
+            imageUri = resultUri;
+
+        }
+
+
     }
 }
