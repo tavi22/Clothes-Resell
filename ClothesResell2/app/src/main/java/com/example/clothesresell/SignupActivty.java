@@ -108,11 +108,18 @@ public class SignupActivty extends AppCompatActivity {
                     hashMap.put("description", "");
                     hashMap.put("imageurl", "https://firebasestorage.googleapis.com/v0/b/clothes-resell-b06fa.appspot.com/o/user-ge5a12c801_640.png?alt=media&token=b13480b3-02d7-4796-b6a4-d496b77093c0");
 
-                    reference.setValue(hashMap);
-                    pd.dismiss();
-                    Intent intent = new Intent(SignupActivty.this, MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
+                    reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                pd.dismiss();
+                                Intent intent = new Intent(SignupActivty.this, MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
+                        }
+                    });
+
 
                 } else {
                     pd.dismiss();
