@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200"
+    android:background="@color/white"
     tools:context=".Fragments.HomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/bar"
         android:background="@color/white"
-        android:paddingTop="60dp"/>
+        android:paddingTop="50dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bar"
-        android:id="@+id/recycler_view"/>
+        android:id="@+id/recycler_view"
+        android:paddingBottom="60dp"/>
 
 </RelativeLayout>
