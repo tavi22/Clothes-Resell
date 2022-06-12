@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.notification:
-                    replaceFragment(new NotificationsFragment());
+                    replaceFragment(new com.example.clothesresell.Fragment.NotificationsFragment());
                     break;
             }
 
