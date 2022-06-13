@@ -1,4 +1,4 @@
-package com.example.clothesresell.Fragment;
+package com.example.clothesresell.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

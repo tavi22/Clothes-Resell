@@ -200,8 +200,9 @@
                 android:horizontalSpacing="1dp"
                 android:numColumns="3"
                 android:stretchMode="columnWidth"
-                android:verticalSpacing="1dp"
-                ></GridView>
+                android:verticalSpacing="1dp">
+
+            </GridView>
 
         </RelativeLayout>
 

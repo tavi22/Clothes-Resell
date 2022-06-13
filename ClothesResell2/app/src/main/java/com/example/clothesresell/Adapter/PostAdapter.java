@@ -1,6 +1,8 @@
 package com.example.clothesresell.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.clothesresell.CommentsActivity;
 import com.example.clothesresell.Model.Post;
 import com.example.clothesresell.Model.User;
 import com.example.clothesresell.R;
@@ -59,6 +62,42 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         }
 
         publisherInfo(viewHolder.image_profile, viewHolder.username, viewHolder.publisher, post.getPublisher());
+        isLiked(post.getPostid(), viewHolder.like);
+        nrLikes(viewHolder.likes, post.getPostid());
+        getComments(post.getPostid(), viewHolder.comments);
+
+        viewHolder.like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (viewHolder.like.getTag().equals("like")){
+                    FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid())
+                            .child(firebaseUser.getUid()).setValue(true);
+                } else {
+                    FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid())
+                            .child(firebaseUser.getUid()).removeValue();
+                }
+            }
+        });
+
+        viewHolder.comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, CommentsActivity.class);
+                intent.putExtra("postid", post.getPostid());
+                intent.putExtra("publisher", post.getPublisher());
+                mContext.startActivity(intent);
+            }
+        });
+
+        viewHolder.comments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, CommentsActivity.class);
+                intent.putExtra("postid", post.getPostid());
+                intent.putExtra("publisher", post.getPublisher());
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
@@ -70,7 +109,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView image_profile, post_image, like, comment, save;
-        public TextView username, likes, publisher, description;
+        public TextView username, likes, publisher, description, comments;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,7 +123,66 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             likes = itemView.findViewById(R.id.likes);
             publisher = itemView.findViewById(R.id.publisher);
             description = itemView.findViewById(R.id.description);
+            comments = itemView.findViewById(R.id.comments);
         }
+    }
+
+    private void getComments(String postid, TextView comments) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Comments").child(postid);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                comments.setText("View all " + snapshot.getChildrenCount() + " comments");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void isLiked(String postid, ImageView imageView){
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+                .child("Likes")
+                .child(postid);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child(firebaseUser.getUid()).exists()){
+                    imageView.setImageResource(R.drawable.ic_liked);
+                    imageView.setTag("liked");
+                } else {
+                    imageView.setImageResource(R.drawable.ic_like);
+                    imageView.setTag("like");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void nrLikes(TextView likes, String postid){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Likes")
+                .child(postid);
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                likes.setText(snapshot.getChildrenCount()+" likes");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void publisherInfo(ImageView image_profile, TextView username, TextView publisher, String userid){
