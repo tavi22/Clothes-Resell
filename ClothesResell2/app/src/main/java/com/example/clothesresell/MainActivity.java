@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 case R.id.notification:
-                    replaceFragment(new NotificationsFragment());
+                    replaceFragment(new NotificationFragment());
                     break;
             }
 
@@ -124,10 +124,6 @@ public class MainActivity extends AppCompatActivity {
                 firebaseAuth.signOut();
                 signOutUser();
                 break;
-
-//            default:
-//                replaceFragment(new HomeFragment());
-//                break;
 
 
         }
