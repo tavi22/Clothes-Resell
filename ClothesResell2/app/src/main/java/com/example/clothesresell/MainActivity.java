@@ -18,6 +18,7 @@ import com.example.clothesresell.Fragments.HelpFragment;
 import com.example.clothesresell.Fragments.HomeFragment;
 import com.example.clothesresell.Fragments.MyProfileFragment;
 import com.example.clothesresell.Fragments.NotificationsFragment;
+import com.example.clothesresell.Fragments.ProfileFragment;
 import com.example.clothesresell.Fragments.WishlistFragment;
 import com.example.clothesresell.databinding.ActivityMainBinding;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -81,9 +82,12 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.profile:
+                    SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+                    editor.putString("profileid", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    editor.apply();
                     replaceFragment(new MyProfileFragment());
-
                     break;
+
 
                 case R.id.notification:
                     replaceFragment(new NotificationsFragment());
