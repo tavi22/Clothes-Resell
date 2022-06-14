@@ -42,6 +42,7 @@ public class CommentsActivity extends AppCompatActivity {
 
     String postid;
     String publisherid;
+    String username;
 
     FirebaseUser firebaseUser;
 
@@ -66,8 +67,7 @@ public class CommentsActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         commentList = new ArrayList<>();
-        commentAdapter = new CommentAdapter(this, commentList);
-        recyclerView.setAdapter(commentAdapter);
+
 
         addcomment = findViewById(R.id.add_comment);
         image_profile = findViewById(R.id.image_profile);
@@ -77,7 +77,10 @@ public class CommentsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         postid = intent.getStringExtra("postid");
-        publisherid = intent.getStringExtra("publisherid");
+        publisherid = intent.getStringExtra("publisher");
+
+        commentAdapter = new CommentAdapter(this, commentList, postid, publisherid);
+        recyclerView.setAdapter(commentAdapter);
 
         post.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,15 +97,31 @@ public class CommentsActivity extends AppCompatActivity {
         readComments();
     }
 
-    private void addcomment() {
+    public void addcomment() {
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Comments").child(postid);
+        String commentid = reference.push().getKey();
 
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("comment", addcomment.getText().toString());
         hashMap.put("publisher", firebaseUser.getUid());
+        hashMap.put("commentid", commentid);
+
+        reference.child(commentid).setValue(hashMap);
+        addNotifications();
+        addcomment.setText("");
+    }
+
+    private void addNotifications() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(publisherid);
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("userid", firebaseUser.getUid());
+        hashMap.put("text", "commented: "+addcomment.getText().toString());
+        hashMap.put("postid", postid);
+        hashMap.put("ispost", true);
 
         reference.push().setValue(hashMap);
-        addcomment.setText("");
     }
 
     private void getImage() {
