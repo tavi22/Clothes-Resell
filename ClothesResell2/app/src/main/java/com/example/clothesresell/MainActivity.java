@@ -24,7 +24,6 @@ import com.example.clothesresell.databinding.ActivityMainBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -113,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.wishlist:
                 replaceFragment(new WishlistFragment());
                 break;
+
 
             case R.id.help:
                 replaceFragment(new HelpFragment());
