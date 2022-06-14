@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClothesResell">
         <activity
+            android:name=".CropProfileImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".CommentsActivity"
             android:exported="false" />
         <activity
