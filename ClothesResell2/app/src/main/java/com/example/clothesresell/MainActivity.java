@@ -12,12 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.example.clothesresell.Fragments.ExploreFragment;
 import com.example.clothesresell.Fragments.HelpFragment;
 import com.example.clothesresell.Fragments.HomeFragment;
 import com.example.clothesresell.Fragments.MyProfileFragment;
-import com.example.clothesresell.Fragments.NotificationsFragment;
+import com.example.clothesresell.Fragments.NotificationFragment;
 import com.example.clothesresell.Fragments.WishlistFragment;
 import com.example.clothesresell.databinding.ActivityMainBinding;
 import com.google.android.material.appbar.MaterialToolbar;

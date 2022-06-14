@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.clothesresell.CommentsActivity;
+import com.example.clothesresell.Fragments.MyProfileFragment;
 import com.example.clothesresell.Fragments.PostDetailFragment;
-import com.example.clothesresell.Fragments.ProfileFragment;
 import com.example.clothesresell.Model.Post;
 import com.example.clothesresell.Model.User;
 import com.example.clothesresell.R;
@@ -79,7 +79,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 editor.apply();
 
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        new ProfileFragment()).commit();
+                        new MyProfileFragment()).commit();
             }
         });
 
@@ -91,7 +91,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 editor.apply();
 
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        new ProfileFragment()).commit();
+                        new MyProfileFragment()).commit();
             }
         });
 
@@ -103,7 +103,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 editor.apply();
 
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        new ProfileFragment()).commit();
+                        new MyProfileFragment()).commit();
             }
         });
 
