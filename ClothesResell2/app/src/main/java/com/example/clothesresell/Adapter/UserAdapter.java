@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.clothesresell.Fragments.ProfileFragment;
+import com.example.clothesresell.Fragments.MyProfileFragment;
 import com.example.clothesresell.Model.User;
 import com.example.clothesresell.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -55,12 +56,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         final User user = mUsers.get(position);
 
         holder.btn_follow.setVisibility(View.VISIBLE);
-        isFollowing(user.getId(), holder.btn_follow);
 
         holder.username.setText(user.getUsername());
         holder.fullname.setText(user.getFullname());
         Glide.with(mContext).load(user.getImageurl()).into(holder.image_profile);
-
+        isFollowing(user.getId(), holder.btn_follow);
 
         if (user.getId().equals(firebaseUser.getUid())) {
             holder.btn_follow.setVisibility(View.GONE);
@@ -74,7 +74,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 editor.apply();
 
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        new ProfileFragment()).commit();
+                        new MyProfileFragment()).commit();
             }
         });
 
@@ -87,6 +87,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
                             .child("followers").child(firebaseUser.getUid()).setValue(true);
+
+                    addNotifications(user.getId());
                 } else {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
                             .child("following").child(user.getId()).removeValue();
@@ -96,6 +98,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 }
             }
         });
+    }
+
+    private void addNotifications(String userid) {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(userid);
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("userid", firebaseUser.getUid());
+        hashMap.put("text", "started following you");
+        hashMap.put("postid", "");
+        hashMap.put("ispost", false);
+
+        reference.push().setValue(hashMap);
     }
 
     @Override
@@ -128,7 +142,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.child(userid).exists()) {
-                    button.setText("unfollow");
+                    button.setText("following");
                 } else {
                     button.setText("follow");
                 }

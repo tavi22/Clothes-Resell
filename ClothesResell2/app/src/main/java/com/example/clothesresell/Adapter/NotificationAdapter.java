@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.clothesresell.Fragments.MyProfileFragment;
+import com.example.clothesresell.Fragments.PostDetailFragment;
 import com.example.clothesresell.Model.Notification;
 import com.example.clothesresell.Model.Post;
 import com.example.clothesresell.Model.User;
@@ -57,21 +58,21 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-//                if (notification.isIspost()){
-//                    SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-//                    editor.putString("postid", notification.getPostid());
-//                    editor.apply();
-//
-//                    ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-//                            new PostDetailFragment()).commit();
-//                } else {
-//                    SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-//                    editor.putString("profileid", notification.getUserid());
-//                    editor.apply();
-//
-//                    ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-//                            new MyProfileFragment()).commit();
-//                }
+                if (notification.isIspost()){
+                    SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+                    editor.putString("postid", notification.getPostid());
+                    editor.apply();
+
+                    ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
+                            new PostDetailFragment()).commit();
+                } else {
+                    SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+                    editor.putString("profileid", notification.getUserid());
+                    editor.apply();
+
+                    ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
+                            new MyProfileFragment()).commit();
+                }
             }
         });
     }
