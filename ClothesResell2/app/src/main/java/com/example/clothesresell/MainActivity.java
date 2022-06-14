@@ -1,6 +1,7 @@
 package com.example.clothesresell;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,8 @@ import com.example.clothesresell.Fragments.ExploreFragment;
 import com.example.clothesresell.Fragments.HelpFragment;
 import com.example.clothesresell.Fragments.HomeFragment;
 import com.example.clothesresell.Fragments.MyProfileFragment;
+import com.example.clothesresell.Fragments.NotificationsFragment;
+import com.example.clothesresell.Fragments.ProfileFragment;
 import com.example.clothesresell.Fragments.WishlistFragment;
 import com.example.clothesresell.databinding.ActivityMainBinding;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -34,19 +37,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         fab = findViewById(R.id.fab);
         firebaseAuth = FirebaseAuth.getInstance();
+
+        Bundle intent = getIntent().getExtras();
+        if (intent != null) {
+            String publisher = intent.getString("publisherid");
+
+            SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+            editor.putString("profileid", publisher);
+            editor.apply();
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new ProfileFragment()).commit();
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
+        }
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.notification:
-                    replaceFragment(new com.example.clothesresell.Fragment.NotificationsFragment());
+                    replaceFragment(new NotificationsFragment());
                     break;
             }
 
