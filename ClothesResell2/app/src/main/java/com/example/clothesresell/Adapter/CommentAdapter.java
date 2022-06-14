@@ -86,7 +86,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             @Override
             public boolean onLongClick(View view) {
                 if (comment.getPublisher().equals(firebaseUser.getUid()) ||
-                        publisher.toString().equals(firebaseUser.getUid().toString())) {
+                        publisher.equals(firebaseUser.getUid())) {
 
                     AlertDialog alertDialog = new AlertDialog.Builder(mContext).create();
                     alertDialog.setTitle("Do you want to delete?");
