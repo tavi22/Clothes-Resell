@@ -17,8 +17,7 @@ import com.example.clothesresell.Fragments.ExploreFragment;
 import com.example.clothesresell.Fragments.HelpFragment;
 import com.example.clothesresell.Fragments.HomeFragment;
 import com.example.clothesresell.Fragments.MyProfileFragment;
-import com.example.clothesresell.Fragments.NotificationFragment;
-import com.example.clothesresell.Fragments.ProfileFragment;
+import com.example.clothesresell.Fragments.NotificationsFragment;
 import com.example.clothesresell.Fragments.WishlistFragment;
 import com.example.clothesresell.databinding.ActivityMainBinding;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             editor.putString("profileid", publisher);
             editor.apply();
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new ProfileFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new MyProfileFragment()).commit();
         } else {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
         }
@@ -82,9 +81,12 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.profile:
+                    SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+                    editor.putString("profileid", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    editor.apply();
                     replaceFragment(new MyProfileFragment());
-
                     break;
+
 
                 case R.id.notification:
                     replaceFragment(new NotificationFragment());
@@ -113,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 replaceFragment(new WishlistFragment());
                 break;
 
+
             case R.id.help:
                 replaceFragment(new HelpFragment());
                 break;
@@ -121,10 +124,6 @@ public class MainActivity extends AppCompatActivity {
                 firebaseAuth.signOut();
                 signOutUser();
                 break;
-
-//            default:
-//                replaceFragment(new HomeFragment());
-//                break;
 
 
         }

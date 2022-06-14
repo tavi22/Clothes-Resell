@@ -13,7 +13,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.clothesresell.Fragments.ProfileFragment;
+import com.example.clothesresell.Fragments.MyProfileFragment;
 import com.example.clothesresell.Model.User;
 import com.example.clothesresell.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -56,12 +56,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         final User user = mUsers.get(position);
 
         holder.btn_follow.setVisibility(View.VISIBLE);
-        isFollowing(user.getId(), holder.btn_follow);
 
         holder.username.setText(user.getUsername());
         holder.fullname.setText(user.getFullname());
         Glide.with(mContext).load(user.getImageurl()).into(holder.image_profile);
-
+        isFollowing(user.getId(), holder.btn_follow);
 
         if (user.getId().equals(firebaseUser.getUid())) {
             holder.btn_follow.setVisibility(View.GONE);
@@ -75,7 +74,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                 editor.apply();
 
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        new ProfileFragment()).commit();
+                        new MyProfileFragment()).commit();
             }
         });
 
@@ -143,7 +142,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.child(userid).exists()) {
-                    button.setText("unfollow");
+                    button.setText("following");
                 } else {
                     button.setText("follow");
                 }
