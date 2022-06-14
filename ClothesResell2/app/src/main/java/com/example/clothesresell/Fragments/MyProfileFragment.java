@@ -36,17 +36,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-/*
- * A simple {@link Fragment} subclass.
- * Use the {@link MyProfileFragmentnewInstance} factory method to
- * create an instance of this fragment.
-*/
-
 public class MyProfileFragment extends Fragment {
 
     ImageView image_profile, options;
     TextView posts, followers, following, fullname, bio, username;
     Button edit_profile;
+
+    private List<String> mySaves;
 
     RecyclerView recyclerView;
     MyPhotoAdapter myPhotoAdapter;
@@ -54,6 +50,10 @@ public class MyProfileFragment extends Fragment {
 
     FirebaseUser firebaseUser;
     String profileid;
+
+    private RecyclerView recyclerView_saves;
+    private MyPhotoAdapter myFotosAdapter_saves;
+    private List<Post> postList_saves;
 
     ImageButton my_fotos, saved_fotos;
 
@@ -88,10 +88,22 @@ public class MyProfileFragment extends Fragment {
         myPhotoAdapter = new MyPhotoAdapter(getContext(), postList);
         recyclerView.setAdapter(myPhotoAdapter);
 
+        recyclerView_saves = view.findViewById(R.id.recycler_view_save);
+        recyclerView_saves.setHasFixedSize(true);
+        LinearLayoutManager mLayoutManagers = new GridLayoutManager(getContext(), 3);
+        recyclerView_saves.setLayoutManager(mLayoutManagers);
+        postList_saves = new ArrayList<>();
+        myFotosAdapter_saves = new MyPhotoAdapter(getContext(), postList_saves);
+        recyclerView_saves.setAdapter(myFotosAdapter_saves);
+
+        recyclerView.setVisibility(View.VISIBLE);
+        recyclerView_saves.setVisibility(View.GONE);
+
         userInfo();
         getFollowers();
         getNbPosts();
         myPhotos();
+        mySaves();
 
         if(profileid.equals(firebaseUser.getUid())){
             edit_profile.setTag("EditProfile");
@@ -124,6 +136,22 @@ public class MyProfileFragment extends Fragment {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileid)
                             .child("followers").child(firebaseUser.getUid()).removeValue();
                 }
+            }
+        });
+
+        my_fotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView.setVisibility(View.VISIBLE);
+                recyclerView_saves.setVisibility(View.GONE);
+            }
+        });
+
+        saved_fotos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recyclerView.setVisibility(View.GONE);
+                recyclerView_saves.setVisibility(View.VISIBLE);
             }
         });
 
@@ -260,4 +288,3 @@ public class MyProfileFragment extends Fragment {
             }
         });
     }
-}
