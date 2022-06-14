@@ -18,13 +18,11 @@ import com.example.clothesresell.Fragments.HelpFragment;
 import com.example.clothesresell.Fragments.HomeFragment;
 import com.example.clothesresell.Fragments.MyProfileFragment;
 import com.example.clothesresell.Fragments.NotificationsFragment;
-import com.example.clothesresell.Fragments.ProfileFragment;
 import com.example.clothesresell.Fragments.WishlistFragment;
 import com.example.clothesresell.databinding.ActivityMainBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             editor.putString("profileid", publisher);
             editor.apply();
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new ProfileFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new MyProfileFragment()).commit();
         } else {
             getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
         }
