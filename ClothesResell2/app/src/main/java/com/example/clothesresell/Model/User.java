@@ -57,4 +57,8 @@ public class User {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    // ne trebuie bio-ul la user?
+    // public int getBio() {
+    // }
 }
