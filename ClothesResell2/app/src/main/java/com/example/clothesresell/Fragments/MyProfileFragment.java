@@ -1,6 +1,7 @@
 package com.example.clothesresell.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,9 +18,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.example.clothesresell.Adapter.MyPhotoAdapter;
+import com.example.clothesresell.FollowersActivity;
+import com.example.clothesresell.EditProfileActivity;
 import com.example.clothesresell.Model.Post;
 import com.example.clothesresell.Model.User;
 import com.example.clothesresell.R;
@@ -39,7 +41,7 @@ import java.util.List;
 public class MyProfileFragment extends Fragment {
 
     ImageView image_profile, options;
-    TextView posts, followers, following, fullname, bio, username;
+    TextView posts, followers, following, fullname, description, username;
     Button edit_profile;
 
     private List<String> mySaves;
@@ -74,7 +76,7 @@ public class MyProfileFragment extends Fragment {
         followers = view.findViewById(R.id.followers);
         following = view.findViewById(R.id.following);
         fullname = view.findViewById(R.id.fullname);
-        bio = view.findViewById(R.id.bio);
+        description = view.findViewById(R.id.description);
         username = view.findViewById(R.id.username);
         edit_profile = view.findViewById(R.id.edit_profile);
         my_fotos = view.findViewById(R.id.my_fotos);
@@ -118,7 +120,7 @@ public class MyProfileFragment extends Fragment {
                 String btn = edit_profile.getText().toString();
 
                 if (btn.equals("Edit Profile")) {
-                    // to EditProfile
+                    startActivity(new Intent(getContext(), EditProfileActivity.class));
                 } else if (btn.equals("follow")) {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
                             .child("following").child(profileid).setValue(true);
@@ -153,6 +155,26 @@ public class MyProfileFragment extends Fragment {
             }
         });
 
+
+        followers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), FollowersActivity.class);
+                intent.putExtra("id", profileid);
+                intent.putExtra("title", "followers");
+                startActivity(intent);
+            }
+        });
+
+        following.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), FollowersActivity.class);
+                intent.putExtra("id", profileid);
+                intent.putExtra("title", "following");
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
@@ -181,7 +203,7 @@ public class MyProfileFragment extends Fragment {
                 Glide.with(getContext()).load(user.getImageurl()).into(image_profile);
                 username.setText(user.getUsername());
                 fullname.setText(user.getFullname());
-                //bio.setText(user.getBio());
+                description.setText(user.getDescription());
             }
 
             @Override
