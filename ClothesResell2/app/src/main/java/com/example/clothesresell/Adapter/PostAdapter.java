@@ -3,7 +3,6 @@ package com.example.clothesresell.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,10 +60,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
         if (post.getDescription().equals("")) {
             viewHolder.description.setVisibility(View.GONE);
+            viewHolder.price.setVisibility(View.GONE);
         } else {
             viewHolder.description.setVisibility(View.VISIBLE);
+            viewHolder.price.setVisibility(View.VISIBLE);
             viewHolder.description.setText(post.getDescription());
+            viewHolder.price.setText(post.getPrice());
         }
+
+//        if (post.getPrice().equals("")) {
+//            viewHolder.price.setVisibility(View.GONE);
+//        } else {
+//            viewHolder.price.setVisibility(View.VISIBLE);
+//            viewHolder.price.setText(post.getPrice());
+//        }
 
         publisherInfo(viewHolder.image_profile, viewHolder.username, viewHolder.publisher, post.getPublisher());
         isLiked(post.getPostid(), viewHolder.like);
@@ -178,7 +187,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView image_profile, post_image, like, comment, save;
-        public TextView username, likes, publisher, description, comments;
+        public TextView username, likes, publisher, description, price, comments;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -192,6 +201,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             likes = itemView.findViewById(R.id.likes);
             publisher = itemView.findViewById(R.id.publisher);
             description = itemView.findViewById(R.id.description);
+            price = itemView.findViewById(R.id.price);
             comments = itemView.findViewById(R.id.comments);
         }
     }

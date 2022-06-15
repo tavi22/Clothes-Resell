@@ -5,29 +5,20 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.canhub.cropper.CropImage;
-import com.canhub.cropper.CropImageContract;
-import com.canhub.cropper.CropImageContractOptions;
-import com.canhub.cropper.CropImageOptions;
-import com.canhub.cropper.CropImageView;
-import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,13 +26,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.annotations.NotNull;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 
 public class PostActivity extends AppCompatActivity {
@@ -53,7 +42,7 @@ public class PostActivity extends AppCompatActivity {
 
     ImageView close, image_added;
     TextView post;
-    EditText description;
+    EditText description, price;
 
     ActivityResultLauncher<String> mGetContent;
 
@@ -67,6 +56,7 @@ public class PostActivity extends AppCompatActivity {
         image_added = findViewById(R.id.image_added);
         post = findViewById(R.id.post);
         description = findViewById(R.id.description);
+        price = findViewById(R.id.price);
         storageReference = FirebaseStorage.getInstance().getReference("posts");
 
 
@@ -82,7 +72,9 @@ public class PostActivity extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                uploadImage();
+                if(validateFields()){
+                    uploadImage();
+                }
             }
         });
 
@@ -103,6 +95,19 @@ public class PostActivity extends AppCompatActivity {
     });
 
 
+    }
+
+    private boolean validateFields() {
+        if (description.getText().length() < 5) {
+            description.setError("Invalid Input. Minimum 5 characters");
+            return false;
+        }else if (price.getText().length() < 1) {
+            price.setError("Invalid Input. Add a price");
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     private String getFileExtension(Uri uri) {
@@ -145,6 +150,7 @@ public class PostActivity extends AppCompatActivity {
                         hashMap.put("postid", postid);
                         hashMap.put("postimage", myUrl);
                         hashMap.put("description", description.getText().toString());
+                        hashMap.put("price", price.getText().toString());
                         hashMap.put("publisher", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
                         reference.child(postid).setValue(hashMap);
