@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         Bundle intent = getIntent().getExtras();
+
         if (intent != null) {
             String publisher = intent.getString("publisherid");
 
@@ -98,6 +99,13 @@ public class MainActivity extends AppCompatActivity {
         topAppBar = findViewById(R.id.topAppBar);
         setSupportActionBar(topAppBar);
 
+        topAppBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
     }
 
     @Override
@@ -139,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
