@@ -1,6 +1,7 @@
 package com.example.clothesresell.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.clothesresell.Fragments.MyProfileFragment;
+import com.example.clothesresell.MainActivity;
 import com.example.clothesresell.Model.User;
 import com.example.clothesresell.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,12 +35,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private final Context mContext;
     private final List<User> mUsers;
+    private boolean isfragment;
 
     private FirebaseUser firebaseUser;
 
-    public UserAdapter(Context mContext, List<User> mUsers) {
+    public UserAdapter(Context mContext, List<User> mUsers, boolean isfragment) {
         this.mContext = mContext;
         this.mUsers = mUsers;
+        this.isfragment = isfragment;
     }
 
     @NonNull
@@ -69,12 +73,26 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-                editor.putString("profileid", user.getId());
-                editor.apply();
+                if(isfragment) {
+                    System.out.println("sunt aici");
+                    SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+                    editor.putString("profileid", user.getId());
+                    editor.apply();
 
-                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        new MyProfileFragment()).commit();
+                    ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
+                            new MyProfileFragment()).commit();
+                }
+                else{
+//                    System.out.println("ba nu. sunt aici");
+//                    System.out.println(mContext);
+                    Intent intent = new Intent(mContext, MainActivity.class);
+//                    System.out.println(intent);
+                    intent.putExtra("publisherid", user.getId());
+//                    System.out.println(user.getId());
+//                    System.out.println(user.getUsername());
+//                    System.out.println(user.getFullname());
+                    mContext.startActivity(intent);
+                }
             }
         });
 

@@ -163,7 +163,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, CommentsActivity.class);
                 intent.putExtra("postid", post.getPostid());
-                intent.putExtra("publisher", post.getPublisher());
+                intent.putExtra("publisherid", post.getPublisher());
                 mContext.startActivity(intent);
             }
         });
@@ -173,7 +173,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, CommentsActivity.class);
                 intent.putExtra("postid", post.getPostid());
-                intent.putExtra("publisher", post.getPublisher());
+                intent.putExtra("publisherid", post.getPublisher());
                 mContext.startActivity(intent);
             }
         });

@@ -77,7 +77,7 @@ public class CommentsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         postid = intent.getStringExtra("postid");
-        publisherid = intent.getStringExtra("publisher");
+        publisherid = intent.getStringExtra("publisherid");
 
         commentAdapter = new CommentAdapter(this, commentList, postid, publisherid);
         recyclerView.setAdapter(commentAdapter);

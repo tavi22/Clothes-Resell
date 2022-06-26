@@ -28,7 +28,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 
@@ -60,7 +59,7 @@ public class ExploreFragment extends Fragment {
         search_bar = view.findViewById(R.id.search_bar);
 
         mUsers = new ArrayList<>();
-        userAdapter = new UserAdapter(getContext(), mUsers);
+        userAdapter = new UserAdapter(getContext(), mUsers, true);
         mPosts = new ArrayList<>();
         postAdapter = new PostAdapter(getContext(), mPosts);
 
