@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         Bundle intent = getIntent().getExtras();
-
+        System.out.println("AAAAAAAAA"+intent);
         if (intent != null) {
             String publisher = intent.getString("publisherid");
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        replaceFragment(new HomeFragment());
+        //replaceFragment(new HomeFragment());
 
         binding.bottomNavView.setOnItemSelectedListener(item -> {
 
