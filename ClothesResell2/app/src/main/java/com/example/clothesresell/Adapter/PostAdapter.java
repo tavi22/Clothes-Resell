@@ -230,6 +230,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 }
 
                 popupMenu.show();
+            }
+            });
 
         viewHolder.likes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -243,10 +245,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
     }
 
+
     @Override
     public int getItemCount() {
         return mPost.size();
     }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
