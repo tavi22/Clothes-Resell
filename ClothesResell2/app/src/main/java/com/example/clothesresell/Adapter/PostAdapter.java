@@ -30,6 +30,7 @@ import com.example.clothesresell.Fragments.PostDetailFragment;
 import com.example.clothesresell.Model.Post;
 import com.example.clothesresell.Model.User;
 import com.example.clothesresell.R;
+import com.example.clothesresell.StartActivity;
 import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -69,8 +70,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         Post post = mPost.get(i);
-
-        Glide.with(mContext).load(post.getPostimage()).into(viewHolder.post_image);
+        if (post == null) {return;}
+            Glide.with(mContext).load(post.getPostimage()).into(viewHolder.post_image);
 
         if (post.getDescription().equals("")) {
             viewHolder.description.setVisibility(View.GONE);
@@ -195,19 +196,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                             case R.id.delete:
                                 final String id = post.getPostid();
                                 FirebaseDatabase.getInstance().getReference("Posts")
-                                        .child(post.getPostid()).removeValue()
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(DatabaseError error, DatabaseReference ref) {
-                                                if (error == null) {
-                                                    Log.d(Tag, "Removed: " + ref);
-                                                    // or you can use:
-                                                    System.out.println("Removed: " + ref);
-                                                } else {
-                                                    Log.e(TAG, "Remove of " + ref + " failed: " + error.getMessage());
-                                                }
-                                            }
-                                        });
+                                        .child(post.getPostid()).removeValue();
+                                deleteNotifications(id, firebaseUser.getUid());
+                                deleteComments(id);
+                                deleteLikes(id);
+                                deleteSaves(id);
+
                                 return true;
                             case R.id.report:
                                 Toast.makeText(mContext, "Report clicked!", Toast.LENGTH_SHORT).show();
@@ -311,13 +305,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         reference.push().setValue(hashMap);
     }
 
-    private void deleteNotifications(final String postid, String userid){
+    private void deleteNotifications(final String postid, String userid) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(userid);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    if (snapshot.child("postid").getValue().equals(postid)){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    if (snapshot.child("postid").getValue().equals(postid)) {
                         snapshot.getRef().removeValue()
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -334,6 +328,65 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
             }
         });
+
+    }
+
+        private void deleteComments(final String postid){
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Comments").child(postid);
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        snapshot.getRef().removeValue();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+    }
+
+    private void deleteLikes(final String postid){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Likes").child(postid);
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    snapshot.getRef().removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void deleteSaves(final String postid){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Saves");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    for (DataSnapshot snap : snapshot.getChildren()) {
+                            if (snap.getKey().equals(postid)) {
+                                snap.getRef().removeValue();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private void nrLikes(TextView likes, String postid){
