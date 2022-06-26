@@ -3,25 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
-=======
 
->>>>>>> e71041a09ae1e2944e37a1becad9f1934b927f77
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.207" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.209" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/activity_crop.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/activity_edit_profile.xml" value="0.264" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/activity_login.xml" value="0.2015625" />
-<<<<<<< HEAD
+
+        <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/fragment_my_profile.xml" value="0.4" />
+        <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/grid_imageview.xml" value="0.1" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/activity_post.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/alert_item.xml" value="0.253125" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/fotos_item.xml" value="0.264" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/fragment_explore.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/fragment_help.xml" value="0.25416666666666665" />
-=======
+
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/fotos_item.xml" value="0.1" />
->>>>>>> e71041a09ae1e2944e37a1becad9f1934b927f77
+
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/fragment_my_profile.xml" value="0.4" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/fragment_notifications.xml" value="0.536" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/fragment_post_detail.xml" value="0.25416666666666665" />
@@ -29,10 +28,7 @@
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/fragment_profile2.xml" value="0.2905982905982906" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/grid_imageview.xml" value="0.1" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/photos_item.xml" value="0.1" />
-<<<<<<< HEAD
-        <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/post_item.xml" value="0.4" />
-=======
->>>>>>> e71041a09ae1e2944e37a1becad9f1934b927f77
+
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/snippet_top_profilebar.xml" value="0.4913494809688581" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/layout/toolbar.xml" value="0.2015625" />
         <entry key="..\:/Users/Stefan/Desktop/Facultate/Proiecte_Java/MDS2/ClothesResell2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2015625" />
@@ -77,16 +73,18 @@
         <entry key="..\:/Users/Tavi/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/menu/top_app_bar.xml" value="0.565625" />
         <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.228" />
+        <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/drawable/ic_more.xml" value="0.1" />
         <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/layout/activity_comments.xml" value="0.346875" />
         <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/layout/comment_item.xml" value="0.2269021739130435" />
         <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/layout/fragment_explore.xml" value="0.346875" />
         <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/layout/fragment_home.xml" value="0.346875" />
         <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/layout/fragment_my_profile.xml" value="0.1" />
         <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/layout/notification_item.xml" value="0.346875" />
-        <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/layout/post_item.xml" value="0.346875" />
+        <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/layout/post_item.xml" value="0.18983957219251338" />
         <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/layout/snippet_top_profilebar.xml" value="0.11548913043478261" />
         <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/layout/toolbar.xml" value="0.346875" />
         <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/layout/user_item.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/lucac/Documents/GitHub/Clothes-Resell/ClothesResell2/app/src/main/res/menu/post_menu.xml" value="0.346875" />
       </map>
     </option>
   </component>
