@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.clothesresell.CommentsActivity;
+import com.example.clothesresell.FollowersActivity;
 import com.example.clothesresell.Fragments.MyProfileFragment;
 import com.example.clothesresell.Fragments.PostDetailFragment;
 import com.example.clothesresell.Model.Post;
@@ -75,10 +76,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
 
         if (post.getDescription().equals("")) {
             viewHolder.description.setVisibility(View.GONE);
+            viewHolder.price.setVisibility(View.GONE);
         } else {
             viewHolder.description.setVisibility(View.VISIBLE);
+            viewHolder.price.setVisibility(View.VISIBLE);
             viewHolder.description.setText(post.getDescription());
+            viewHolder.price.setText(post.getPrice());
         }
+
+//        if (post.getPrice().equals("")) {
+//            viewHolder.price.setVisibility(View.GONE);
+//        } else {
+//            viewHolder.price.setVisibility(View.VISIBLE);
+//            viewHolder.price.setText(post.getPrice());
+//        }
 
         publisherInfo(viewHolder.image_profile, viewHolder.username, viewHolder.publisher, post.getPublisher());
         isLiked(post.getPostid(), viewHolder.like);
@@ -219,6 +230,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 }
 
                 popupMenu.show();
+
+        viewHolder.likes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, FollowersActivity.class);
+                intent.putExtra("id", post.getPostid());
+                intent.putExtra("title", "likes");
+                mContext.startActivity(intent);
             }
         });
 
@@ -232,7 +251,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView image_profile, post_image, like, comment, save, more;
-        public TextView username, likes, publisher, description, comments;
+        public TextView username, likes, publisher, description, price, comments;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -246,6 +265,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             likes = itemView.findViewById(R.id.likes);
             publisher = itemView.findViewById(R.id.publisher);
             description = itemView.findViewById(R.id.description);
+            price = itemView.findViewById(R.id.price);
             comments = itemView.findViewById(R.id.comments);
             more = itemView.findViewById(R.id.more);
         }
