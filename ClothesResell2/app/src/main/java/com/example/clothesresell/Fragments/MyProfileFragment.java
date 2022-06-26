@@ -142,14 +142,19 @@ public class MyProfileFragment extends Fragment {
         my_fotos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                my_fotos.setImageResource(R.drawable.ic_grid2);
+                saved_fotos.setImageResource(R.drawable.ic_save1);
                 recyclerView.setVisibility(View.VISIBLE);
                 recyclerView_saves.setVisibility(View.GONE);
             }
+
         });
 
         saved_fotos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                saved_fotos.setImageResource(R.drawable.ic_save2);
+                my_fotos.setImageResource(R.drawable.ic_grid1);
                 recyclerView.setVisibility(View.GONE);
                 recyclerView_saves.setVisibility(View.VISIBLE);
             }

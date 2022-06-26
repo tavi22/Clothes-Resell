@@ -202,7 +202,7 @@
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_grid" />
+                    android:src="@drawable/ic_grid2" />
 
                 <ImageButton
                     android:id="@+id/saved_fotos"
@@ -210,7 +210,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_save" />
+                    android:src="@drawable/ic_save1" />
 
             </LinearLayout>
 
