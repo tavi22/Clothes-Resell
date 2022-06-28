@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClothesResell">
         <activity
-                   android:name=".FollowersActivity"/>
+            android:name=".MessageActivity"
+            android:exported="false" />
+        <activity android:name=".FollowersActivity" />
         <activity
             android:name=".CropProfileImageActivity"
             android:exported="false" />
@@ -33,8 +35,8 @@
             android:name=".PostActivity"
             android:exported="false"
             android:label="@string/title_activity_post"
-            android:theme="@style/Theme.ClothesResell.NoActionBar"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.ClothesResell.NoActionBar" />
         <activity
             android:name=".StartActivity"
             android:exported="true">
