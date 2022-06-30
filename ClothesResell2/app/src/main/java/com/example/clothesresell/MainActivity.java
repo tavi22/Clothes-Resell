@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.example.clothesresell.Fragments.ChatsFragment;
 import com.example.clothesresell.Fragments.ExploreFragment;
 import com.example.clothesresell.Fragments.HelpFragment;
 import com.example.clothesresell.Fragments.HomeFragment;
@@ -119,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.wishlist:
-                replaceFragment(new WishlistFragment());
+                replaceFragment(new ChatsFragment());
                 break;
 
 

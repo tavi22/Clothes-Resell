@@ -6,13 +6,15 @@ public class User {
     private String fullname;
     private String imageurl;
     private String description;
+    private String status;
 
-    public User(String id, String username, String fullname, String imageurl, String description) {
+    public User(String id, String username, String fullname, String imageurl, String description, String status) {
         this.id = id;
         this.username = username;
         this.fullname = fullname;
         this.imageurl = imageurl;
         this.description = description;
+        this.status = status;
     }
 
     public User() {
@@ -56,6 +58,14 @@ public class User {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     // ne trebuie bio-ul la user?
