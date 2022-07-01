@@ -83,14 +83,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                             new MyProfileFragment()).commit();
                 }
                 else{
-//                    System.out.println("ba nu. sunt aici");
-//                    System.out.println(mContext);
+
                     Intent intent = new Intent(mContext, MainActivity.class);
-//                    System.out.println(intent);
                     intent.putExtra("publisherid", user.getId());
-//                    System.out.println(user.getId());
-//                    System.out.println(user.getUsername());
-//                    System.out.println(user.getFullname());
                     mContext.startActivity(intent);
                 }
             }

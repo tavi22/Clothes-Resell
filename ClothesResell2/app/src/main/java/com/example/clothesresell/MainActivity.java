@@ -13,13 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.clothesresell.Fragments.ChatsFragment;
 import com.example.clothesresell.Fragments.ExploreFragment;
 import com.example.clothesresell.Fragments.HelpFragment;
 import com.example.clothesresell.Fragments.HomeFragment;
 import com.example.clothesresell.Fragments.MyProfileFragment;
 import com.example.clothesresell.Fragments.NotificationFragment;
-import com.example.clothesresell.Fragments.WishlistFragment;
 import com.example.clothesresell.databinding.ActivityMainBinding;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -66,9 +64,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-        //replaceFragment(new HomeFragment());
 
         binding.bottomNavView.setOnItemSelectedListener(item -> {
 
@@ -120,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.wishlist:
-                replaceFragment(new ChatsFragment());
+            case R.id.chat:
+                startActivity(new Intent(MainActivity.this, ChatActivity.class));
                 break;
 
 

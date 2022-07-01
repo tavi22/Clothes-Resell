@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.clothesresell.Adapter.ChatAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,8 +31,9 @@ public class ChatsFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
-    private UserAdapter userAdapter;
+    private ChatAdapter chatAdapter;
     private List<User> mUsers;
+
 
     FirebaseUser fuser;
     DatabaseReference reference;
@@ -47,9 +49,11 @@ public class ChatsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
         usersList = new ArrayList<>();
+
 
         reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(fuser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
@@ -83,13 +87,14 @@ public class ChatsFragment extends Fragment {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     User user = snapshot.getValue(User.class);
                     for (Chatlist chatlist : usersList){
+                        assert user != null;
                         if (user.getId().equals(chatlist.getId())){
                             mUsers.add(user);
                         }
                     }
                 }
-                userAdapter = new UserAdapter(getContext(), mUsers, true);
-                recyclerView.setAdapter(userAdapter);
+                chatAdapter = new ChatAdapter(getContext(), mUsers, true);
+                recyclerView.setAdapter(chatAdapter);
             }
 
             @Override

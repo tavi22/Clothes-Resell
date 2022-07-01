@@ -68,7 +68,4 @@ public class User {
         this.status = status;
     }
 
-    // ne trebuie bio-ul la user?
-    // public int getBio() {
-    // }
 }
