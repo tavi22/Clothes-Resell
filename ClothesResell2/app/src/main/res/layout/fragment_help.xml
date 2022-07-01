@@ -31,7 +31,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="600dp"
-        android:text="About us "
+        android:text="@string/about_us_help"
         android:textColor="#AC2E06"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="560dp"
-        android:text="   An application for selling used clothes with an instagram type interface, each user has a profile with their objects for sale and a system of followers, plus an option that includes a system for checking the originality of high-end clothes."
+        android:text="@string/description_help"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +62,7 @@
         android:layout_marginTop="19dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="500dp"
-        android:text="Age Requirements"
+        android:text="@string/age_requirements_help"
         android:textColor="#AC2E06"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="300dp"
-        android:text="    Reseller requires everyone to be at least 13 years old before they can create an account.\n   Accounts that represent someone under the age of 13 must clearly state in the account’s bio that the account is managed by a parent or manager."
+        android:text="@string/age_desc_help"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="200dp"
-        android:text="Privacy and Security "
+        android:text="@string/privacy_and_security_help"
         android:textColor="#AC2E06"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -110,7 +110,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="32dp"
-        android:text="    You have control over who can see your Reseller posts, who can comment on your posts, and who follows you.\n  You can also limit how others interact with your Reseller account."
+        android:text="@string/privacy_desc_help"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,7 +118,7 @@
         app:layout_constraintVertical_bias="0.085" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_find"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -130,12 +130,12 @@
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/btn_back"
         app:layout_constraintTop_toBottomOf="@+id/textView10"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
@@ -146,7 +146,7 @@
         android:backgroundTint="@android:color/holo_red_dark"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/btn_find"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 </androidx.constraintlayout.widget.ConstraintLayout>

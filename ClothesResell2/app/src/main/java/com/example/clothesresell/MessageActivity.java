@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -13,10 +14,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.clothesresell.Fragments.MyProfileFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -47,6 +52,7 @@ public class MessageActivity extends AppCompatActivity {
     ImageButton btn_send;
     EditText text_send;
 
+
     MessageAdapter messageAdapter;
     List<Chat> mchat;
 
@@ -70,11 +76,12 @@ public class MessageActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // and this
-                startActivity(new Intent(MessageActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(MessageActivity.this, ChatActivity.class));
+                finish();
             }
         });
 
@@ -93,6 +100,13 @@ public class MessageActivity extends AppCompatActivity {
         intent = getIntent();
         userid = intent.getStringExtra("userid");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
+
+        profile_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // aici
+            }
+        });
 
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
