@@ -13,9 +13,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="about_us_help">About us</string>
-    <string name="description_help">An application for selling used clothes with an instagram type interface, each user has a profile with their objects for sale and a system of followers, plus an option that includes a system for checking the originality of high-end clothes.</string>
+    <string name="description_help">\tAn application for selling used clothes with an instagram type interface, each user has a profile with their objects for sale and a system of followers, plus an option that includes a system for checking the originality of high-end clothes.</string>
     <string name="age_requirements_help">Age Requirements</string>
-    <string name="age_desc_help">Reseller requires everyone to be at least 13 years old before they can create an account.\n Accounts that represent someone under the age of 13 must clearly state in the account’s bio that the account is managed by a parent or manager.</string>
+    <string name="age_desc_help">\tReseller requires everyone to be at least 13 years old before they can create an account.\n\tAccounts that represent someone under the age of 13 must clearly state in the account’s bio that the account is managed by a parent or manager.</string>
     <string name="privacy_and_security_help">Privacy and Security</string>
-    <string name="privacy_desc_help">You have control over who can see your Reseller posts, who can comment on your posts, and who follows you.\n You can also limit how others interact with your Reseller account.</string>
+    <string name="privacy_desc_help">\tYou have control over who can see your Reseller posts, who can comment on your posts, and who follows you.\n\tYou can also limit how others interact with your Reseller account.</string>
 </resources>

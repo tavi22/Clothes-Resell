@@ -1,5 +1,7 @@
 package com.example.clothesresell.Fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,11 +13,7 @@ import android.widget.Button;
 
 import com.example.clothesresell.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HelpFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HelpFragment extends Fragment {
 
     private Button back, find_more;
@@ -26,8 +24,15 @@ public class HelpFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_help, container, false);
 
-        back = view.findViewById(R.id.btn_back);
         find_more = view.findViewById(R.id.btn_find);
+
+        find_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri uri = Uri.parse("https://github.com/tavi22/Reseller");
+                startActivity(new Intent(Intent.ACTION_VIEW, uri));
+            }
+        });
 
         return view;
     }
