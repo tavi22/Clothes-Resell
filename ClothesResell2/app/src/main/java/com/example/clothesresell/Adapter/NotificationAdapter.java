@@ -64,14 +64,14 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                     editor.apply();
 
                     ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                            new PostDetailFragment()).commit();
+                            new PostDetailFragment()).addToBackStack(null).commit();
                 } else {
                     SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
                     editor.putString("profileid", notification.getUserid());
                     editor.apply();
 
                     ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                            new MyProfileFragment()).commit();
+                            new MyProfileFragment()).addToBackStack(null).commit();
                 }
             }
         });

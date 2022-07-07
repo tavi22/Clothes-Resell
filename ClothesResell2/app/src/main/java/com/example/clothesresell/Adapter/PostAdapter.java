@@ -84,12 +84,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
             viewHolder.price.setText(post.getPrice());
         }
 
-//        if (post.getPrice().equals("")) {
-//            viewHolder.price.setVisibility(View.GONE);
-//        } else {
-//            viewHolder.price.setVisibility(View.VISIBLE);
-//            viewHolder.price.setText(post.getPrice());
-//        }
 
         publisherInfo(viewHolder.image_profile, viewHolder.username, viewHolder.publisher, post.getPublisher());
         isLiked(post.getPostid(), viewHolder.like);
@@ -119,7 +113,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 editor.apply();
 
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        new MyProfileFragment()).commit();
+                        new MyProfileFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -131,7 +125,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 editor.apply();
 
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        new MyProfileFragment()).commit();
+                        new MyProfileFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -143,7 +137,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 editor.apply();
 
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        new MyProfileFragment()).commit();
+                        new MyProfileFragment()).addToBackStack(null).commit();
             }
         });
 
@@ -155,7 +149,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 editor.apply();
 
                 ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        new PostDetailFragment()).commit();
+                        new PostDetailFragment()).addToBackStack(null).commit();
             }
         });
 

@@ -80,7 +80,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                     editor.apply();
 
                     ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                            new MyProfileFragment()).commit();
+                            new MyProfileFragment()).addToBackStack(null).commit();
                 }
                 else{
 

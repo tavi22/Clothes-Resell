@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
             editor.putString("profileid", publisher);
             editor.apply();
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new MyProfileFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new MyProfileFragment()).addToBackStack(null).commit();
         } else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new HomeFragment()).addToBackStack(null).commit();
         }
 
         fab.setOnClickListener(new View.OnClickListener() {

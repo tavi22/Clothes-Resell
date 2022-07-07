@@ -50,7 +50,7 @@ public class MyPhotoAdapter extends RecyclerView.Adapter<MyPhotoAdapter.ViewHold
                 editor.apply();
 
                 ((FragmentActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,
-                        new PostDetailFragment()).commit();
+                        new PostDetailFragment()).addToBackStack(null).commit();
             }
         });
     }
